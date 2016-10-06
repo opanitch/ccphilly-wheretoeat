@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+	<title>Small Projects Restaurant Selector</title>
+	<meta charset="utf-8"/>
+	<script>
+		!function(d,s){
+			s=d.head.appendChild(d.createElement('script'));
+			s.onload=function(){
+				jQuery.jQueryRandom = 0;
+				jQuery.extend(jQuery.expr[":"], {
+					random: function(a, i, m, r) {
+						if (0 === i) jQuery.jQueryRandom = Math.floor(Math.random() * r.length);
+						return jQuery.jQueryRandom === i;
+					}
+				});
+				function refresh(e) {
+					if (!e.hasOwnProperty('keyCode') || e.keyCode === 32) {
+						$("dt").css('display', '');
+						$("dt:random").show();
+					}
+				}
+				function show_all(e) {
+					$("dl").toggleClass("show-all");
+				}
+				$('#next').click(refresh);
+				$(document).keydown(refresh);
+				$('#next').click();
+				$('#all').click(show_all);
+			};
+			s.src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js";
+		}(document)
+	</script>
+	<style>
+		body {
+			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			font-size: 36px;
+			margin: 0;
+			padding: 0;
+		}
+		h1 {
+			font-size: 12px;
+			border-bottom: 1px solid black;
+			background: gray;
+			color: white;
+			margin: 0;
+			padding: 20px;
+			text-align: right;
+		}
+		dl {
+			margin: 40px;
+			text-align: center;
+		}
+		dl.show-all {
+			text-align: left;
+			-moz-column-width: 390px;
+			-moz-column-gap: 20px;
+			-webkit-column-width: 390px;
+			-webkit-column-gap: 20px;
+			column-width: 390px;
+			column-gap: 20px;
+		}
+		dt {
+			font-weight: bold;
+			display: none;
+			white-space: nowrap;
+		}
+		dl.show-all dt {
+			display: block;
+		}
+		button {
+			background: white;
+			border: 0;
+			width: auto;
+			padding: 20px;
+			text-decoration: underline;
+			cursor: pointer;
+			font-size: 18px;
+			display: inline;
+		}
+		.buttons {
+			border-top: 1px dashed black;
+			margin: 10px 0 0;
+		}
+		#next {
+			float: left;
+		}
+		#all {
+			float: right;
+		}
+			
+	</style>
+</head>
+<body>
+<h1>EEMS KoP Restaurant Selector</h1>
+<dl>
+	<dt>Baha Fresh</dt>
+	<dt>Bahama Breeze</dt>
+	<dt>Bistro on Bridge</dt>
+	<dt>Black Lab Bistro</dt>
+	<dt>California Pizza Kitchen</dt>
+	<dt>Cheesecake Factory</dt>
+	<dt>Desi Village</dt>
+	<dt>Food Court</dt>
+	<dt>Gino&rsquo;s</dt>
+	<dt>Han Dynasty</dt>
+	<dt>Kabuki</dt>
+	<dt>Kebab CafÃ©</dt>
+	<dt>La Michoacana</dt>
+	<dt>Longhorn</dt>
+	<dt>Maggiano&rsquo;s</dt>
+	<dt>McKenzie Brew House</dt>
+	<dt>Mesa Fresh</dt>
+	<dt>Minado</dt>
+	<dt>Olive Garden</dt>
+	<dt>Outback</dt>
+	<dt>P.F. Chang&rsquo;s</dt>
+	<dt>Panera</dt>
+	<dt>Peppers</dt>
+	<dt>Primo&rsquo;s</dt>
+	<dt>Qdoba</dt>
+	<dt>Red Lobster</dt>
+	<dt>Rib House</dt>
+	<dt>Sly Fox</dt>
+	<dt>Spice Kitchen</dt>
+	<dt>Taste of India</dt>
+	<dt>Thai L&rsquo;Elephant</dt>
+	<dt>Thai Place</dt>
+	<dt>Tilted Kilt</dt>
+	<dt>Wild Rice</dt>
+</dl>
+<div class="buttons">
+	<button id="next">No thanks, I don't feel like eating there today.</button>
+	<button id="all">Just show me all of them.</button>
+</div>
+</body>
+</html>
