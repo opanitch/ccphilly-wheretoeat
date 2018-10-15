@@ -1,26 +1,42 @@
-!(function(d, s) {
-  s = d.head.appendChild(d.createElement("script"));
-  s.onload = function() {
-    jQuery.jQueryRandom = 0;
-    jQuery.extend(jQuery.expr[":"], {
-      random: function(a, i, m, r) {
-        if (0 === i) jQuery.jQueryRandom = Math.floor(Math.random() * r.length);
-        return jQuery.jQueryRandom === i;
+(function(doc, $) {
+  var $doc = $(doc);
+
+  $.jQueryRandom = 0;
+  $.extend($.expr[':'], {
+    random: function(a, i, m, r) {
+      if (i === 0) {
+        $.jQueryRandom = Math.floor(Math.random() * r.length);
       }
-    });
-    function refresh(e) {
-      if (!e.hasOwnProperty("keyCode") || e.keyCode === 32) {
-        $("dt").css("display", "");
-        $("dt:random").show();
-      }
+
+      return $.jQueryRandom === i;
     }
-    function show_all(e) {
-      $("dl").toggleClass("show-all");
+  });
+
+  function refresh(e) {
+    if (!e.hasOwnProperty('keyCode') || e.keyCode === 32) {
+      $('dt').css('display', '');
+      $('dt:random').show();
     }
-    $("#next").click(refresh);
-    $(document).keydown(refresh);
-    $("#next").click();
-    $("#all").click(show_all);
-  };
-  s.src = "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js";
-})(document);
+  }
+
+  function showAll() {
+    $('dl').toggleClass('show-all');
+  }
+
+  function applyBindings() {
+    // Refresh on Next Button click
+    $doc.on('click', '#next', refresh);
+    // Refresh on key press
+    $doc.on('keydown', refresh);
+    // Show All Button click
+    $doc.on('click', '#all', showAll);
+  }
+
+  function init() {
+    // if restaurant list exists
+    applyBindings();
+    $('#next').click();
+  }
+
+  init();
+})(document, jQuery);
