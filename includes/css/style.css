@@ -175,6 +175,10 @@ span {
     list-style: none;
 }
 
+.wte-place-list.wte-place-list--show {
+    display: block;
+}
+
 .wte-place-list-item {
     text-align: center;
 }
