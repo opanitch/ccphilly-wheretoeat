@@ -1,5 +1,6 @@
 (function(doc, $) {
-  var $doc = $(doc),
+  var $win = $(window),
+    $doc = $(doc),
     activeList = '',
     classes = {
       active: 'wte-place--choice',
@@ -15,13 +16,16 @@
   }
 
   function setActiveList() {
-    var hash = window.location.hash ? window.location.hash : 'kop';
+    var pageLists = $('.wte-place-list'),
+      hash = window.location.hash ? window.location.hash : '#kop';
 
-    activeList = hash;
+    if (pageLists.filter(hash).length > 0) {
+      activeList = hash;
+    }
   }
 
   function getChoice() {
-    var $currentList = $('.wte-place-list').filter('#' + activeList),
+    var $currentList = $('.wte-place-list').filter(activeList),
       $listItems = $currentList.find('li'),
       randomNum = getRandomInt(0, $listItems.length);
 
@@ -41,14 +45,13 @@
 
   function showAll(listId) {
     $('.wte-place-list')
-      .filter('#' + listId)
+      .filter(listId)
       .addClass(classes.showAll);
   }
 
   function handleUserAction(event) {
-    var keyPress =
-        event.hasOwnProperty('keyCode') && event.keyCode === 32 ? true : false,
-      btnPress = !event.hasOwnProperty('keyCode'),
+    var keyPress = event.keyCode && event.keyCode === 32 ? true : false,
+      btnPress = !event.keyCode,
       $nextChoice,
       isListVisible =
         $('.wte-place-list').filter('.' + classes.showAll).length > 0;
@@ -63,6 +66,11 @@
     }
   }
 
+  function handleHashChange(event) {
+    setActiveList();
+    handleUserAction(event);
+  }
+
   function applyBindings() {
     // Refresh on Next Button click
     $doc.on('click', '#next', handleUserAction);
@@ -72,13 +80,18 @@
     $doc.on('click', '#show-all', function() {
       showAll(activeList);
     });
+    // Change active list
+    $win.on('hashchange', handleHashChange);
   }
 
   function init() {
+    var $choice;
+
     // if restaurant list exists
     applyBindings();
     setActiveList();
-    setChoice(getChoice());
+    $choice = getChoice();
+    setChoice($choice);
   }
 
   init();
