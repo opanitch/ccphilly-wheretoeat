@@ -8,6 +8,9 @@
 }
 
 body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 16px;
     line-height: 1.25;
@@ -42,6 +45,7 @@ span {
 .wte-page-container {
     width: 100%;
     max-width: 1024px;
+    margin: 0 auto;
     padding: 0 25px;
 }
 
@@ -138,6 +142,60 @@ span {
     text-decoration: none;
 }
 
+/* Body Section */
+.wte-place-container {
+    width: 100%;
+    padding: 40px;
+    flex: 1;
+    background-color: #333;
+}
+
+/* Singular Entry Section */
+.wte-place-choice {
+    width: 100%;
+    text-align: center;
+}
+
+.wte-place-choice-container {
+    padding: 0 30px;
+}
+
+.wte-place-choice-title {
+    color: #fff;
+}
+
+.wte-place-choice-title::after {
+    content: "...";
+}
+
+/* Full List */
+.wte-place-list {
+    margin: 0 auto;
+    display: none;
+    list-style: none;
+}
+
+.wte-place-list-item {
+    text-align: center;
+}
+
+.wte-place-list-item + .wte-place-list-item {
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #666;
+}
+
+.wte-place-list-item-copy {
+    padding: 10px 0;
+}
+
+.wte-place-list-link {
+    display: inline;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+}
+
 
 dl {
     margin: 40px;
@@ -164,6 +222,12 @@ dl.show-all dt {
     display: block;
 }
 
+/* Action Bar */
+.wte-action-bar {
+    text-align: right;
+}
+
+/* Buttons */
 button {
     background: white;
     border: 0;
@@ -180,11 +244,10 @@ button {
     margin: 10px 0 0;
 }
 
-#next {
-    float: left;
+/* Footer */
+.wte-footer {
+    padding: 20px 0;
+    background-color: #000;
+    text-align: center;
+    color: #fff;
 }
-
-#all {
-    float: right;
-}
-    
