@@ -200,38 +200,24 @@ span {
     color: #fff;
 }
 
-
-dl {
-    margin: 40px;
-    text-align: center;
-}
-
-dl.show-all {
-    text-align: left;
-    -moz-column-width: 390px;
-    -moz-column-gap: 20px;
-    -webkit-column-width: 390px;
-    -webkit-column-gap: 20px;
-    column-width: 390px;
-    column-gap: 20px;
-}
-
-dt {
-    font-weight: bold;
-    display: none;
-    white-space: nowrap;
-}
-
-dl.show-all dt {
-    display: block;
-}
-
 /* Action Bar */
 .wte-action-bar {
     text-align: right;
 }
 
 /* Buttons */
+.wte-btn {
+
+}
+
+.wte-btn--primary {
+
+}
+
+.wte-btn--secondary {
+
+}
+
 button {
     background: white;
     border: 0;

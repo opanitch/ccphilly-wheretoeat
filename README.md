@@ -1,7 +1,7 @@
 # ccphilly-wheretoeat
 
 ## Current Live Iteration
-[Where to Eat](https://skunkworks.opanitch.com/ccphilly-wheretoeat)
+[Where to Eat](http://sandbox.opanitch.com/ccphilly-wheretoeat/)
 
 ---
 ### Future Plans
